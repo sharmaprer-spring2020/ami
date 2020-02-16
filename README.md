@@ -1,0 +1,2 @@
+# ami
+Repository for AMI
