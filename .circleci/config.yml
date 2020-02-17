@@ -1,0 +1,23 @@
+---
+version: 2
+jobs:
+  build_deploy:
+    docker:
+      - image: hashicorp/packer:1.5.4
+    steps:
+    - checkout #check out source code
+    - run:
+        name: packer validate template
+        command: packer validate -var 'aws_access_key=${env:dev_aws_access_key}' -var 'aws_secret_key=${env:dev_aws_secret_key}' packerTemplate.json
+    - run:
+        name: packer build ami
+        command: packer build -var 'aws_access_key=${env:dev_aws_access_key}' -var 'aws_secret_key=${env:dev_aws_secret_key}' packerTemplate.json
+    
+workflows:
+  version: 2
+  build-deploy-workflow:
+    jobs:
+    - build_deploy
+      filters:
+        branches:
+          only: master
