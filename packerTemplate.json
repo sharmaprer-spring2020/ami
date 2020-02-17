@@ -31,7 +31,8 @@
                 "sudo apt-get install apache2 -y",
                 "sudo apt-get install openjdk-8-jdk -y",
                 "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/",
-                "echo $JAVA_HOME"
+                "echo $JAVA_HOME",
+                "sudo apt-get install tomcat8 -y"
             ]
         }
     ],
@@ -42,6 +43,6 @@
         "subnet_id": "",
         "username": "ubuntu",
         "instance_type":"t2.micro",
-        "ami_users":"[904555864734,538151268849]"
+        "ami_users":"904555864734,538151268849"
     }
 }
