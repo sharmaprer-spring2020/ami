@@ -1,0 +1,49 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "ami_users": "{{user `ami_users`}}",
+            "instance_type": "{{user `instance_type`}}",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `aws_region`}}",
+            "source_ami":"{{user `source_ami`}}",
+            "ssh_username":"{{user `username`}}",
+            "subnet_id": "{{user `subnet_id`}}",
+            "ami_name":"Packer_{{timestamp}}",
+            "ami_description": "Ubuntu AMi for course",
+            "launch_block_device_mappings": [
+                {
+                    "device_name": "/dev/sda1",
+                    "volume_size": "10",
+                    "volume_type": "gp2",
+                    "delete_on_termination": true
+                }
+            ]
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo apt-get update",
+                "sudo apt-get install apache2 -y",
+                "sudo apt-get install openjdk-8-jdk -y",
+                "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/",
+                "echo $JAVA_HOME"
+            ]
+        }
+    ],
+
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": "",
+        "aws_region": "us-east-1",
+        "source_ami": "ami-07ebfd5b3428b6f4d",
+        "subnet_id": "",
+        "username": "ubuntu",
+        "instance_type":"t2.micro",
+        "ami_users":"[904555864734,538151268849]"
+    }
+}
