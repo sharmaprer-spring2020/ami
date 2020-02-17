@@ -8,10 +8,10 @@ jobs:
     - checkout #check out source code
     - run:
         name: packer validate template
-        command: packer validate -var 'aws_access_key=${env:dev_aws_access_key}' -var 'aws_secret_key=${env:dev_aws_secret_key}' packerTemplate.json
+        command: packer validate -var 'aws_access_key=${dev_aws_access_key}' -var 'aws_secret_key=${dev_aws_secret_key}' packerTemplate.json
     - run:
         name: packer build ami
-        command: packer build -var 'aws_access_key=${env:dev_aws_access_key}' -var 'aws_secret_key=${env:dev_aws_secret_key}' packerTemplate.json
+        command: packer build -var 'aws_access_key=${dev_aws_access_key}' -var 'aws_secret_key=${dev_aws_secret_key}' packerTemplate.json
     
 workflows:
   version: 2
