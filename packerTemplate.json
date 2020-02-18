@@ -26,14 +26,8 @@
     "provisioners": [
         {
             "type": "shell",
-            "inline": [
-                "sudo apt-get update",
-                "sudo apt-get install apache2 -y",
-                "sudo apt-get install openjdk-8-jdk -y",
-                "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/",
-                "echo $JAVA_HOME",
-                "sudo apt-get install tomcat8 -y"
-            ]
+            "script": "installationScript.sh"
+            
         }
     ],
 
