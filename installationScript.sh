@@ -26,6 +26,5 @@ cd /opt/tomcat8
 sudo chmod -R 777 webapp
 sudo chmod -R 777 work
 echo "export CATALINA_HOME='/opt/tomcat8/'" >> ~/.bashrc
-cat ~/.bashrc
 cd /opt/tomcat8/bin
 ./startup.sh
