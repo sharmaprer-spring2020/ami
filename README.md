@@ -1,4 +1,5 @@
 # Building custom AMI using Packer with Ubuntu 18 LTS as source image #
+ 
 
 ### Prerequisites  ###
 * Homebrew for MAC OS
