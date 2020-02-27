@@ -1,6 +1,7 @@
 sudo apt-get update
 sudo apt-get install apache2 -y
 sudo apt-get install maven -y
+sudo apt-get install unzip -y
 sudo apt-get install openjdk-8-jdk -y
 sudo apt-get install wget -y
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
