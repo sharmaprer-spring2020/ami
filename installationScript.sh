@@ -11,7 +11,6 @@ if [ ! -f /etc/apache-tomcat-8*tar.gz ]
 then
  sudo wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.46/bin/apache-tomcat-8.0.46.tar.gz -P /etc
 fi
-sudo ls -l /etc | grep 'tomcat'
 echo 'Tomcat downloaded..!!'
 echo 'create tomcat installation directory'
 sudo mkdir -p '/opt/tomcat8/'
@@ -19,7 +18,6 @@ sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat8 tomcat
 echo 'extract tomcat binaries in installation directory'
 sudo tar -xvf /etc/apache-tomcat-8*tar.gz -C "/opt/tomcat8" --strip-components=1
-sudo ls -l /opt/tomcat8
 sudo chmod -R 777 /opt/tomcat8
 sudo chmod +x /opt/tomcat8/bin/*.bat
 sudo su
@@ -55,8 +53,4 @@ sudo chmod 755 /etc/systemd/system/tomcat.service
 sudo systemctl daemon-reload
 sudo systemctl enable tomcat.service
 sudo systemctl start tomcat.service
-
 echo "export CATALINA_HOME='/opt/tomcat8/'" >> ~/.bashrc
-
-#cd /opt/tomcat8/bin
-#./startup.sh
