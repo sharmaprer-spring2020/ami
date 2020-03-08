@@ -18,3 +18,6 @@ workflows:
   build-deploy-workflow:
     jobs:
     - build_deploy
+    filters:
+          branches:
+            only: feature/assignment7
