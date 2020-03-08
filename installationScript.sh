@@ -1,3 +1,4 @@
+echo "region is ${region}"
 sudo apt-get update
 sudo apt-get install apache2 -y
 sudo apt-get install maven -y
@@ -57,6 +58,7 @@ echo "export CATALINA_HOME='/opt/tomcat8/'" >> ~/.bashrc
 
 #start aws code deploy installation
 cd ~
+sudo apt-get update
 sudo apt-get install ruby -y
 cd /home/ubuntu
 wget https://aws-codedeploy-${region}.s3.${region}.amazonaws.com/latest/install
