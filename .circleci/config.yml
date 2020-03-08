@@ -17,7 +17,7 @@ workflows:
   version: 2
   build-deploy-workflow:
     jobs:
-    - build_deploy
-    filters:
+    - build_deploy:
+        filters:
           branches:
             only: feature/assignment7
