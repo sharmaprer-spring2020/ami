@@ -26,6 +26,7 @@
     "provisioners": [
         {
             "type": "shell",
+            "environment_vars": ["region={{user `aws_region`}}"],
             "script": "installationScript.sh"
             
         }

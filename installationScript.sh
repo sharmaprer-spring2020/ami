@@ -54,3 +54,17 @@ sudo systemctl daemon-reload
 sudo systemctl enable tomcat.service
 sudo systemctl start tomcat.service
 echo "export CATALINA_HOME='/opt/tomcat8/'" >> ~/.bashrc
+
+#start aws code deploy installation
+cd ~
+sudo apt-get install ruby -y
+cd /home/ubuntu
+wget https://aws-codedeploy-${region}.s3.${region}.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+#Check codedeploy service is running
+sudo service codedeploy-agent status
+#Start codedeploy service 
+sudo service codedeploy-agent start
+#Check codedeploy service status should be running
+sudo service codedeploy-agent status
