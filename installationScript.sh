@@ -23,7 +23,7 @@ sudo chmod -R 777 /opt/tomcat8
 sudo chmod +x /opt/tomcat8/bin/*.bat
 sudo su
 cd /opt/tomcat8
-sudo chmod -R 777 webapp
+sudo chmod -R 777 webapps
 sudo chmod -R 777 work
 cd ..
 sudo chown -R tomcat tomcat8/
