@@ -1,4 +1,3 @@
-echo "region is ${region}"
 sudo apt-get update
 sudo apt-get install apache2 -y
 sudo apt-get install maven -y
@@ -70,3 +69,10 @@ sudo service codedeploy-agent status
 sudo service codedeploy-agent start
 #Check codedeploy service status should be running
 sudo service codedeploy-agent status
+
+#Install cloud watch agent
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+
+sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
+sudo systemctl start amazon-cloudwatch-agent
+sudo systemctl enable amazon-cloudwatch-agent
