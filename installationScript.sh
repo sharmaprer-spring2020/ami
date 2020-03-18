@@ -74,6 +74,22 @@ sudo service codedeploy-agent status
 wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
+sudo touch cloudwatch.service
+sudo chmod 777 cloudwatch.service
+echo '[Unit]' > cloudwatch.service
+echo 'Description=AWS Cloud Watch Agent' >> cloudwatch.service
+echo 'After=network.target' >> cloudwatch.service
+echo '[Service]' >> cloudwatch.service
+echo 'Type=forking' >> cloudwatch.service
+echo 'ExecStart=/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/home/ubuntu/cloudwatch-config.json -s' >> cloudwatch.service
+echo 'ExecStop=/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a stop' >> cloudwatch.service
+echo 'User=ubuntu' >> cloudwatch.service
+echo 'RestartSec=10' >> cloudwatch.service
+echo 'Restart=on-failure' >> cloudwatch.service
+echo '[Install]' >> cloudwatch.service
+echo 'WantedBy=multi-user.target' >> cloudwatch.service
+sudo mv /home/ubuntu/cloudwatch.service /etc/systemd/system/cloudwatch.service
+sudo chmod 755 /etc/systemd/system/cloudwatch.service   
 sudo systemctl enable amazon-cloudwatch-agent
 #sudo systemctl start cloudwatch.service
 sudo systemctl start amazon-cloudwatch-agent
