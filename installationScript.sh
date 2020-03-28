@@ -38,9 +38,9 @@ echo 'Environment=CATALINA_PID=/opt/tomcat8/temp/tomcat.pid' >> tomcat.service
 echo 'Environment=CATALINA_HOME=/opt/tomcat8' >> tomcat.service
 echo 'Environment=CATALINA_BASE=/opt/tomcat8' >> tomcat.service
 echo 'Environment=CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC' >> tomcat.service
-echo 'Environment=JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom' >> tomcat.service
+echo 'Environment=JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true' >> tomcat.service
 echo 'ExecStart=/opt/tomcat8/bin/startup.sh' >> tomcat.service
-echo 'ExecStop=/opt/tomcat/8/bin/shutdown.sh' >> tomcat.service
+echo 'ExecStop=/opt/tomcat8/bin/shutdown.sh' >> tomcat.service
 echo 'User=tomcat' >> tomcat.service
 echo 'Group=tomcat' >> tomcat.service
 echo "UMask=0007" >> tomcat.service
